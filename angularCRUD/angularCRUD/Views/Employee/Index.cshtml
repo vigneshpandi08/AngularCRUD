@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/AngularCode.js"></script>
+<script src="~/Scripts/angular.js"></script>
+
+<h2>Index</h2>
+<div ng-app="myApp">
+    <div ng-controller="myCtrl" ng-init="GetAllData()" class="divList">
+        <p class="divHead">List of Employee</p>
+        <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+                <td>
+                    <b>EmployeeId</b>
+                </td>
+                <td>
+                    <b>EmployeeName</b>
+                </td>
+                <td>
+                    <b>EmailId</b>
+                </td>
+                <td>
+                    <b>MobileNo</b>
+                </td>
+                <td>
+                    <b>Salary</b>
+                </td>
+                <td>
+                    <b>Status</b>
+                </td>
+            </tr>
+            <tr ng-repeat="Emp in employees">
+                <td>
+                    {{Emp.EmployeeId}}
+                </td>
+                <td>
+                    {{Emp.EmployeeName}}
+                </td>
+                <td>
+                    {{Emp.EmailId}}
+                </td>
+                <td>
+                    {{Emp.MobileNo}}
+                </td>
+                <td>
+                    {{Emp.Salary}}
+                </td>
+                <td>
+                    <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateEmp(Emp)" />
+                    <input type="button" class="btn btn-danger" value="Delete" ng-click="DeleteEmp(Emp)" />
+                </td>
+            </tr>
+        </table>
+        <div class="form-horizontal" role="form">
+            <div class="container">
+                <div class="row">
+                    <h2>
+                        <span id="spn">Add New Employee</span>
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">EmployeeName:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">EmailId:</label>
+                            <div class="col-md-8">
+                                <input type="email" class="form-control" ng-model="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">MobileNo:</label>
+                            <div class="col-md-8">
+                                <input type="tel" class="form-control" ng-model="Mobile">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Salary:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="Sal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-4">
+                        <input type="button" id="btnSave" class="btn btn-success" value="Submit" ng-click="InsertData()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Hidden("EmpID_")
+    
+</div>
